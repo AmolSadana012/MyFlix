@@ -1,0 +1,72 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #141414;
+  font-family: Arial, sans-serif;
+  color: white;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #141414;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  border-bottom: 1px solid #222;
+}
+
+/* Logo */
+.logo {
+  width: 120px;
+  cursor: pointer;
+}
+
+/* Navigation Links */
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #e50914;
+}
+
+/* Profile Icons */
+.profile-icons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.profile-icons i {
+  font-size: 20px;
+  color: white;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.profile-icons i:hover {
+  color: #e50914;
+}
+
+.profile-pic {
+  width: 35px;
+  height: 35px;
+  border-radius: 4px;
+  object-fit: cover;
+  cursor: pointer;
+}
