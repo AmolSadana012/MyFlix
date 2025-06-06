@@ -1,0 +1,159 @@
+/* Reset default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #141414;
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+/* Navbar styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+}
+
+.logo {
+  width: 100px;
+}
+
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 0.95rem;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #e50914;
+}
+
+.profile-icons {
+  display: flex;
+  align-items: center;
+}
+
+.profile-icons i {
+  font-size: 1.2rem;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.profile-pic {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Banner Section */
+.banner {
+  background: url("assets/images/banner.jpg") no-repeat center center/cover;
+  height: 90vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 100px 50px 0;
+  position: relative;
+}
+
+.banner::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  height: 30vh;
+  width: 100%;
+  background: linear-gradient(to top, #141414, transparent);
+}
+
+.banner-content {
+  z-index: 1;
+  max-width: 600px;
+}
+
+.banner h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.banner p {
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+  line-height: 1.4;
+}
+
+.btn {
+  padding: 10px 25px;
+  border: none;
+  border-radius: 4px;
+  margin-right: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.play {
+  background-color: #fff;
+  color: #000;
+}
+
+.play:hover {
+  background-color: #e6e6e6;
+}
+
+.info {
+  background-color: rgba(109, 109, 110, 0.7);
+  color: #fff;
+}
+
+.info:hover {
+  background-color: rgba(109, 109, 110, 0.4);
+}
+
+/* Movie rows */
+.movie-row {
+  margin-top: 40px;
+  padding: 0 40px;
+}
+
+.movie-row h2 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+}
+
+.row-posters {
+  display: flex;
+  overflow-x: scroll;
+  padding-bottom: 10px;
+}
+
+.row-posters::-webkit-scrollbar {
+  display: none;
+}
+
+.poster {
+  max-height: 160px;
+  object-fit: cover;
+  margin-right: 10px;
+  transition: transform 0.3s;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.poster:hover {
+  transform: scale(1.08);
+}
