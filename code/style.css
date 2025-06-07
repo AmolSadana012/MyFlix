@@ -66,10 +66,12 @@ nav a:hover {
   cursor: pointer;
 }
 
+/* Banner */
 .banner {
   position: relative;
   margin-top: 70px;
   height: 70vh;
+  width: 100%;
   overflow: hidden;
 }
 
@@ -82,9 +84,11 @@ nav a:hover {
 
 .banner-content {
   position: absolute;
-  top: 30%;
+  top: 50%;
   left: 50px;
+  transform: translateY(-50%);
   color: white;
+  max-width: 600px;
 }
 
 .banner-content h1 {
@@ -94,7 +98,6 @@ nav a:hover {
 
 .banner-content p {
   font-size: 1.2rem;
-  max-width: 600px;
   margin-bottom: 20px;
 }
 
@@ -114,6 +117,7 @@ nav a:hover {
   background-color: #e6e6e6;
 }
 
+/* Movie Rows */
 .movie-row {
   padding: 40px;
 }
@@ -127,7 +131,8 @@ nav a:hover {
   display: flex;
   gap: 15px;
   overflow-x: auto;
-  scrollbar-width: none;
+  padding-bottom: 10px;
+  scrollbar-width: none; /* Firefox */
 }
 
 .movie-thumbnails::-webkit-scrollbar {
@@ -136,7 +141,7 @@ nav a:hover {
 
 .movie-thumbnails img {
   width: 180px;
-  height: 100px;
+  height: 260px; /* Increased height for better poster look */
   border-radius: 5px;
   object-fit: cover;
   transition: transform 0.3s ease;
@@ -147,6 +152,7 @@ nav a:hover {
   transform: scale(1.08);
 }
 
+/* Footer */
 .footer {
   padding: 30px 40px;
   background-color: #0f0f0f;
