@@ -66,38 +66,33 @@ nav a:hover {
   cursor: pointer;
 }
 
-/* Container holding all banners */
 .banner {
-  margin-top: 70px; /* navbar height */
+  margin-top: 70px;
   padding: 0 40px;
   background-color: #141414;
   overflow-x: auto;
-  scrollbar-width: none;
-  height: 70vh; /* same as original banner height */
-  white-space: nowrap; /* prevent wrapping */
   display: flex;
-  align-items: center;
+  gap: 20px;
+  height: 70vh;
+  scrollbar-width: none; /* Firefox */
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
 }
 
-/* Hide scrollbar */
 .banner::-webkit-scrollbar {
-  display: none;
+  display: none; /* Chrome/Safari */
 }
 
-/* Each banner */
 .banner-item {
   position: relative;
-  display: inline-block; /* inline block for horizontal scrolling */
-  width: 100vw; /* width same as full viewport */
-  height: 70vh; /* height same as original banner */
+  flex: 0 0 calc((100% - 80px) / 3); /* show 3 banners in viewport */
+  height: 100%;
   border-radius: 12px;
   overflow: hidden;
-  margin-right: 20px;
   cursor: pointer;
   box-shadow: 0 0 15px rgba(229, 9, 20, 0.7);
   transition: transform 0.3s ease;
-  flex-shrink: 0; /* prevent shrinking */
-  background-color: black; /* fill empty space around images */
+  scroll-snap-align: start;
 }
 
 .banner-item:hover {
@@ -108,10 +103,9 @@ nav a:hover {
 .banner-item img {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* show full image without cropping */
+  object-fit: cover;
   filter: brightness(60%);
   transition: filter 0.3s ease;
-  background-color: black; /* background for empty space */
 }
 
 .banner-item:hover img {
@@ -125,19 +119,19 @@ nav a:hover {
   right: 20px;
   color: white;
   text-shadow: 0 0 6px rgba(0,0,0,0.8);
+  z-index: 2;
 }
 
 .banner-text h2 {
-  font-size: 3rem;
-  margin-bottom: 10px;
+  font-size: 1.8rem;
+  margin-bottom: 8px;
 }
 
 .banner-text p {
-  font-size: 1.2rem;
+  font-size: 1rem;
   line-height: 1.3;
   color: #ccc;
 }
-
 
 /* Movie Rows */
 .movie-row {
@@ -154,7 +148,7 @@ nav a:hover {
   gap: 15px;
   overflow-x: auto;
   padding-bottom: 10px;
-  scrollbar-width: none; /* Firefox */
+  scrollbar-width: none;
 }
 
 .movie-thumbnails::-webkit-scrollbar {
@@ -163,7 +157,7 @@ nav a:hover {
 
 .movie-thumbnails img {
   width: 180px;
-  height: 260px; /* Increased height for better poster look */
+  height: 260px;
   border-radius: 5px;
   object-fit: cover;
   transition: transform 0.3s ease;
