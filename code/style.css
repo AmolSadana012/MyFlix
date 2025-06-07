@@ -66,56 +66,78 @@ nav a:hover {
   cursor: pointer;
 }
 
-/* Banner */
+/* Container holding all banners */
 .banner {
-  position: relative;
-  margin-top: 70px;
-  height: 70vh;
-  width: 100%;
-  overflow: hidden;
+  margin-top: 70px; /* navbar height */
+  padding: 0 40px;
+  background-color: #141414;
+  overflow-x: auto;
+  scrollbar-width: none;
+  height: 70vh; /* same as original banner height */
+  white-space: nowrap; /* prevent wrapping */
+  display: flex;
+  align-items: center;
 }
 
-.banner-img {
+/* Hide scrollbar */
+.banner::-webkit-scrollbar {
+  display: none;
+}
+
+/* Each banner */
+.banner-item {
+  position: relative;
+  display: inline-block; /* inline block for horizontal scrolling */
+  width: 100vw; /* width same as full viewport */
+  height: 70vh; /* height same as original banner */
+  border-radius: 12px;
+  overflow: hidden;
+  margin-right: 20px;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(229, 9, 20, 0.7);
+  transition: transform 0.3s ease;
+  flex-shrink: 0; /* prevent shrinking */
+  background-color: black; /* fill empty space around images */
+}
+
+.banner-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(229, 9, 20, 1);
+}
+
+.banner-item img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain; /* show full image without cropping */
   filter: brightness(60%);
+  transition: filter 0.3s ease;
+  background-color: black; /* background for empty space */
 }
 
-.banner-content {
+.banner-item:hover img {
+  filter: brightness(40%);
+}
+
+.banner-text {
   position: absolute;
-  top: 50%;
-  left: 50px;
-  transform: translateY(-50%);
+  bottom: 25px;
+  left: 20px;
+  right: 20px;
   color: white;
-  max-width: 600px;
+  text-shadow: 0 0 6px rgba(0,0,0,0.8);
 }
 
-.banner-content h1 {
+.banner-text h2 {
   font-size: 3rem;
   margin-bottom: 10px;
 }
 
-.banner-content p {
+.banner-text p {
   font-size: 1.2rem;
-  margin-bottom: 20px;
+  line-height: 1.3;
+  color: #ccc;
 }
 
-.banner-buttons button {
-  background-color: white;
-  color: black;
-  border: none;
-  padding: 10px 20px;
-  margin-right: 10px;
-  font-size: 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.banner-buttons button:hover {
-  background-color: #e6e6e6;
-}
 
 /* Movie Rows */
 .movie-row {
