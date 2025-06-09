@@ -90,11 +90,12 @@ movies.forEach(movie => {
   popularMovies.appendChild(img);
 });
 
-// First 3 for top picks
-movies.slice(0, 3).forEach(movie => {
+// Top picks (first 10)
+movies.slice(0, 10).forEach(movie => {
   const img = document.createElement('img');
   img.src = movie.image;
   img.alt = movie.title;
   img.title = `${movie.title} - ${movie.description}`;
   topPicks.appendChild(img);
 });
+
