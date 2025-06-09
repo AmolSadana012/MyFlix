@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>MyFlix</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-  <!-- Navbar -->
+
   <header class="navbar">
     <img src="../assets/images/logo.png" alt="MyFlix Logo" class="logo" />
     <nav>
@@ -19,126 +19,31 @@
       <a href="#">My List</a>
     </nav>
     <div class="profile-icons">
-      <i class="fa fa-search"></i>
+      <i class="fas fa-search"></i>
       <img src="../assets/images/profile.jpg" alt="Profile" class="profile-pic" />
     </div>
   </header>
 
-  <!-- Banner Section with multiple banner cards -->
-<section class="banner">
-  <div class="banner-item" style="background-image: url('../assets/images/movie1.jpg');">
-    <div class="banner-text">
-      <h2>The Accountant 2</h2>
-      <p>When an old acquaintance is murdered, Wolff is compelled to solve the case.</p>
-      <div class="banner-actions">
-        <i class="fa-solid fa-play"></i>
-        <i class="fa-solid fa-plus"></i>
-      </div>
-    </div>
-  </div>
-  <div class="banner-item" style="background-image: url('../assets/images/movie7.jpg');">
-    <div class="banner-text">
-      <h2>Ginny & Georgia</h2>
-      <p>Some short description about the movie 2.</p>
-      <div class="banner-actions">
-        <i class="fa-solid fa-play"></i>
-        <i class="fa-solid fa-plus"></i>
-      </div>
-    </div>
-  </div>
-  <div class="banner-item" style="background-image: url('../assets/images/movie3.jpg');">
-    <div class="banner-text">
-      <h2>Ballerina</h2>
-      <p>Some short description about the movie 3.</p>
-      <div class="banner-actions">
-        <i class="fa-solid fa-play"></i>
-        <i class="fa-solid fa-plus"></i>
-      </div>
-    </div>
-  </div>
-  <div class="banner-item" style="background-image: url('../assets/images/movie4.jpg');">
-    <div class="banner-text">
-      <h2>The Last of Us</h2>
-      <p>Some short description about the movie 4.</p>
-      <div class="banner-actions">
-        <i class="fa-solid fa-play"></i>
-        <i class="fa-solid fa-plus"></i>
-      </div>
-    </div>
-  </div>
-  <div class="banner-item" style="background-image: url('../assets/images/movie5.jpg');">
-    <div class="banner-text">
-      <h2>Mercy for None</h2>
-      <p>Some short description about the movie 5.</p>
-      <div class="banner-actions">
-        <i class="fa-solid fa-play"></i>
-        <i class="fa-solid fa-plus"></i>
-      </div>
-    </div>
-  </div>
-</section>
+  <section class="banner">
+    <div class="banner-track"></div>
+  </section>
 
-  <!-- Movie Rows -->
   <section class="movie-row">
     <h2>Popular on MyFlix</h2>
-    <div class="movie-thumbnails">
-      <img src="../assets/images/movie1.jpg" alt="Movie 1" />
-      <img src="../assets/images/movie2.jpg" alt="Movie 2" />
-      <img src="../assets/images/movie3.jpg" alt="Movie 3" />
-      <img src="../assets/images/movie4.jpg" alt="Movie 4" />
-      <img src="../assets/images/movie5.jpg" alt="Movie 5" />
-      <img src="../assets/images/movie6.jpg" alt="Movie 6" />
-      <img src="../assets/images/movie7.jpg" alt="Movie 7" />
-      <img src="../assets/images/movie8.jpg" alt="Movie 8" />
-      <img src="../assets/images/movie9.jpg" alt="Movie 9" />
-      <img src="../assets/images/movie10.jpg" alt="Movie 10" />
-      <img src="../assets/images/movie11.jpg" alt="Movie 11" />
-      <img src="../assets/images/movie12.jpg" alt="Movie 12" />
-
-    </div>
+    <div class="movie-thumbnails"></div>
   </section>
 
   <section class="movie-row">
-    <h2>Top Picks For You</h2>
-    <div class="movie-thumbnails">
-      <img src="../assets/images/movie12.jpg" alt="Movie 12" />
-      <img src="../assets/images/movie7.jpg" alt="Movie 7" />
-      <img src="../assets/images/movie1.jpg" alt="Movie 1" />
-      <img src="../assets/images/movie10.jpg" alt="Movie 10" />
-      <img src="../assets/images/movie4.jpg" alt="Movie 4" />
-    </div>
+    <h2>Top Picks for You</h2>
+    <div class="movie-thumbnails"></div>
   </section>
 
-  <section class="movie-row">
-    <h2>Action Movies</h2>
-    <div class="movie-thumbnails">
-      <img src="../assets/images/movie12.jpg" alt="Movie 12" />
-      <img src="../assets/images/movie7.jpg" alt="Movie 7" />
-      <img src="../assets/images/movie1.jpg" alt="Movie 1" />
-      <img src="../assets/images/movie10.jpg" alt="Movie 10" />
-      <img src="../assets/images/movie4.jpg" alt="Movie 4" />
-    </div>
-  </section>
-
-  <section class="movie-row">
-    <h2>Comedy Movies</h2>
-    <div class="movie-thumbnails">
-      <img src="../assets/images/movie12.jpg" alt="Movie 12" />
-      <img src="../assets/images/movie7.jpg" alt="Movie 7" />
-      <img src="../assets/images/movie1.jpg" alt="Movie 1" />
-      <img src="../assets/images/movie10.jpg" alt="Movie 10" />
-      <img src="../assets/images/movie4.jpg" alt="Movie 4" />
-    </div>
-  </section>
-
-  <!-- Footer -->
   <footer class="footer">
-    <div class="footer-content">
-      <p>&copy; 2025 MyFlix, Inc. All rights reserved.</p>
-      <p>
-        <a href="#">Privacy</a> | <a href="#">Terms</a> | <a href="#">Help Center</a>
-      </p>
-    </div>
+    &copy; 2025 MyFlix. All rights reserved.
+    <br />
+    <a href="#">Privacy</a> | <a href="#">Terms</a> | <a href="#">Contact</a>
   </footer>
+
+  <script src="script.js" defer></script>
 </body>
 </html>
