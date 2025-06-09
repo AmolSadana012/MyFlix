@@ -1,28 +1,28 @@
 // Sample movie data array
 const movies = [
   {
-    title: "The Batman",
-    description: "The dark knight fights crime in Gotham City.",
+    title: "To All The Boys I Have Loved Before",
+    description: "A charming teen romance where a girl's secret love letters are unexpectedly sent out, turning her life upside down.",
     image: "../assets/images/m1.jpg"
   },
   {
-    title: "Inception",
-    description: "A mind-bending journey through dreams.",
+    title: "Accountant 1",
+    description: "A skilled accountant with a secretive life gets caught in a dangerous conspiracy involving crime and deception.",
     image: "../assets/images/movie1.jpg"
   },
   {
-    title: "Interstellar",
-    description: "Exploring the far reaches of space to save humanity.",
+    title: "The Last of Us",
+    description: "In a post-apocalyptic world, a hardened survivor and a young girl form an unlikely bond while navigating deadly threats.",
     image: "../assets/images/movie4.jpg"
   },
   {
-    title: "Stranger Things",
-    description: "Supernatural forces and secrets unravel in a small town.",
+    title: "Ballerina",
+    description: "A young orphan dreams of becoming a ballet dancer and sets off on a journey to follow her passion and find her true self.",
     image: "../assets/images/movie3.jpg"
   },
   {
-    title: "Avengers: Endgame",
-    description: "Heroes unite to defeat Thanos and restore the universe.",
+    title: "Mercy Over None",
+    description: "A gritty crime thriller where a detective faces moral dilemmas and dangerous criminals in pursuit of justice.",
     image: "../assets/images/movie5.jpg"
   },
   {
