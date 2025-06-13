@@ -1,0 +1,13 @@
+# MyFlix :
+(This project is currently under development.) 
+A Netflix-like front-end web project built with HTML, CSS, and JavaScript. 
+Browse movies, see descriptions, and explore top picks.
+
+# Features :
+- Movie gallery with images and descriptions
+- Top picks section
+- Responsive design for mobile and desktop
+- Simple and clean UI
+
+# Contributing :
+Pull requests are welcome! For major changes, please open an issue first to discuss what you'd like to change.
