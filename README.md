@@ -1,5 +1,9 @@
 # MyFlix :
+
+![License: Non-Commercial Use Only](https://img.shields.io/badge/license-Non--Commercial-orange)
+
 (This project is currently under development.) 
+
 A Netflix-like front-end web project built with HTML, CSS, and JavaScript. 
 Browse movies, see descriptions, and explore top picks.
 
