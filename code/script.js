@@ -99,3 +99,18 @@ movies.slice(0, 10).forEach(movie => {
   topPicks.appendChild(img);
 });
 
+// Responsive menu 
+const menuBtn = document.querySelector('.menu-btn');
+const navMenu = document.querySelector('.nav-menu');
+const menuIcon = menuBtn.querySelector('i');
+
+menuBtn.addEventListener('click', () => {
+  navMenu.classList.toggle('active');
+  if (navMenu.classList.contains('active')) {
+    menuIcon.classList.remove('fa-bars');
+    menuIcon.classList.add('fa-close');
+  } else {
+    menuIcon.classList.remove('fa-close');
+    menuIcon.classList.add('fa-bars');
+  }
+});

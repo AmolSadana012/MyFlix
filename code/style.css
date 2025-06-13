@@ -152,6 +152,44 @@ nav a:hover {
   .banner-text p {
     font-size: 1rem;
   }
+  /* Responsive menu */
+  .nav-menu {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 260px;
+    background: #141414;
+    padding-top: 40px;
+    z-index: 3;
+    border-right: 1px solid #6a6a6a;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+  .nav-menu a {
+    display: block;
+    padding: 15px;
+  }
+  .logo {
+    width: 70px;
+    padding: 5px;
+  }
+  .menu-btn{
+    display: block;
+  }
+  .nav-menu.active {
+    transform: translateX(0);
+  }
+  .menu-btn i {
+    font-size: 22px;
+    position: relative;
+    z-index: 3;
+  }
+}
+@media (min-width: 768px) {
+  .menu-btn{
+    display: none;
+  }
 }
 
 
