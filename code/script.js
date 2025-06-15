@@ -99,3 +99,15 @@ movies.slice(0, 10).forEach(movie => {
   topPicks.appendChild(img);
 });
 
+const openBtn = document.querySelector('.menu-open-btn');
+const closeBtn = document.querySelector('.close-btn');
+const navMenu = document.querySelector('.nav-menu');
+
+openBtn.addEventListener('click', () => {
+  navMenu.classList.add('active');
+});
+
+closeBtn.addEventListener('click', () => {
+  navMenu.classList.remove('active');
+});
+

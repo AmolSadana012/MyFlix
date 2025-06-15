@@ -10,19 +10,33 @@
 <body>
 
   <header class="navbar">
-    <img src="../assets/images/logo.png" alt="MyFlix Logo" class="logo" />
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">TV Shows</a>
-      <a href="#">Movies</a>
-      <a href="#">New & Popular</a>
-      <a href="#">My List</a>
-    </nav>
-    <div class="profile-icons">
-      <i class="fas fa-search"></i>
-      <img src="../assets/images/profile.jpg" alt="Profile" class="profile-pic" />
+  <img src="../assets/images/logo.png" alt="MyFlix Logo" class="logo" />
+
+  <!-- Slide-in Nav Menu -->
+  <nav class="nav-menu">
+    <!-- Close Icon (inside sliding menu) -->
+    <div class="menu-btn close-btn">
+      <i class="fa fa-close"></i>
     </div>
-  </header>
+    <a href="#"><i class="fa fa-home"></i> Home</a>
+    <a href="#"><i class="fa fa-tv"></i> TV Shows</a>
+    <a href="#"><i class="fa fa-film"></i> Movies</a>
+    <a href="#"><i class="fa fa-bolt"></i> Popular</a>
+    <a href="#"><i class="fa fa-heart"></i> My List</a>
+    <a href="#"><i class="fa-solid fa-right-from-bracket"></i>Sign out</a>
+  </nav>
+
+  <div class="profile-icons">
+    <i class="fas fa-search"></i>
+    <img src="../assets/images/profile.jpg" alt="Profile" class="profile-pic" />
+  </div>
+
+  <!-- Open Hamburger Icon -->
+  <div class="menu-open-btn">
+    <i class="fa fa-bars"></i>
+  </div>
+</header>
+
 
   <section class="banner">
     <div class="banner-track"></div>
