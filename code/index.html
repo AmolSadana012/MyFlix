@@ -18,12 +18,16 @@
     <div class="menu-btn close-btn">
       <i class="fa fa-close"></i>
     </div>
-    <a href="#"><i class="fa fa-home"></i> Home</a>
-    <a href="#"><i class="fa fa-tv"></i> TV Shows</a>
-    <a href="#"><i class="fa fa-film"></i> Movies</a>
-    <a href="#"><i class="fa fa-bolt"></i> Popular</a>
-    <a href="#"><i class="fa fa-heart"></i> My List</a>
-    <a href="#"><i class="fa-solid fa-right-from-bracket"></i>Sign out</a>
+    <a href="#home"><i class="fa fa-home"></i> Home</a>
+    <a href="#movies"><i class="fa fa-tv"></i> Series</a>
+    <a href="#movies"><i class="fa fa-film"></i> Movies</a>
+    <a href="#popular"><i class="fa fa-bolt"></i> Popular</a>
+    <a href="#movies"><i class="fa fa-heart"></i> My List</a>
+    <!-- <a href="#"><i class="fa-solid fa-right-from-bracket"></i>Sign out</a> -->
+    <button class="sign-out-btn">
+      <i class="fa-solid fa-right-from-bracket"></i> Sign out
+    </button>
+
   </nav>
 
   <div class="profile-icons">
@@ -38,16 +42,16 @@
 </header>
 
 
-  <section class="banner">
+  <section id="home" class="banner">
     <div class="banner-track"></div>
   </section>
 
-  <section class="movie-row">
+  <section id="popular" class="movie-row">
     <h2>Popular on MyFlix</h2>
     <div class="movie-thumbnails"></div>
   </section>
 
-  <section class="movie-row">
+  <section id="movies" class="movie-row">
     <h2>Top Picks for You</h2>
     <div class="movie-thumbnails"></div>
   </section>
