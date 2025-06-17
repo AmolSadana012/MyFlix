@@ -111,8 +111,11 @@ closeBtn.addEventListener('click', () => {
   navMenu.classList.remove('active');
 });
 
-document.querySelector('.sign-out-btn').addEventListener('click', () => {
-  alert('Signed out!');
-  // window.location.href = "login.html"; // optional redirect
-});
+// document.querySelector('.sign-out-btn').addEventListener('click', () => {
+//   alert('Signed out!');
+// });
+
+function signOut() {
+  window.location.href = "login.html";
+}
 
