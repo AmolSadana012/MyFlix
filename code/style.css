@@ -295,6 +295,13 @@ nav a:hover {
     display: flex !important;
     gap: 20px;
     align-items: center;
+    flex-direction: row;
+  }
+
+  .nav-menu a {
+    display: flex;        
+    align-items: center;  
+    gap: 8px;            
   }
 }
 
