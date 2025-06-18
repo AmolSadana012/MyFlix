@@ -321,13 +321,17 @@ nav a:hover {
   cursor: pointer;
   border-radius: 5px;
   display: flex;
+  font-weight: bold;
   align-items: center;
+  justify-content: center;
+  min-width: 130px; 
+  height: 48px;      
   gap: 8px;
   transition: background-color 0.3s ease;
 }
 
 .sign-out-btn:hover {
-  background-color: black;
+  background-color: #1E90FF;
 }
 
 /* Logo inside the sliding menu */
