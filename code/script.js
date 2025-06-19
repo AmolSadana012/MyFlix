@@ -120,23 +120,41 @@ function signOut() {
 }
 
 const searchIcon = document.getElementById('search-icon');
-const searchBox = document.getElementById('search-box');
+const floatingSearch = document.getElementById('floating-search');
+const mobileSearchBox = document.getElementById('mobile-search-box');
 
 searchIcon.addEventListener('click', () => {
-  // If on mobile, toggle display
+  // Only act on mobile
   if (window.innerWidth <= 768) {
-    searchBox.classList.toggle('active');
-    if (searchBox.classList.contains('active')) {
-      searchBox.focus();
-    }
+    floatingSearch.style.display = 'block';
+    mobileSearchBox.focus();
   } else {
-    // Desktop search behavior
-    const query = searchBox.value.trim().toLowerCase();
-    if (query !== '') {
-      console.log("Searching for:", query);
-      // Filter movies here if needed
+    // Desktop search
+    const desktopQuery = document.getElementById('search-box')?.value.trim().toLowerCase();
+    if (desktopQuery) {
+      console.log("Desktop Search:", desktopQuery);
     }
   }
 });
 
+// Pressing Enter on mobile triggers search and hides input
+mobileSearchBox.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    const query = mobileSearchBox.value.trim().toLowerCase();
+    if (query) {
+      console.log("Mobile Search:", query);
+    }
+    floatingSearch.style.display = 'none';
+  }
+});
 
+// Clicking outside hides the floating box
+document.addEventListener('click', (e) => {
+  if (
+    window.innerWidth <= 768 &&
+    !floatingSearch.contains(e.target) &&
+    e.target.id !== 'search-icon'
+  ) {
+    floatingSearch.style.display = 'none';
+  }
+});
