@@ -111,10 +111,6 @@ closeBtn.addEventListener('click', () => {
   navMenu.classList.remove('active');
 });
 
-// document.querySelector('.sign-out-btn').addEventListener('click', () => {
-//   alert('Signed out!');
-// });
-
 function signOut() {
   window.location.href = "login.html";
 }
@@ -122,33 +118,52 @@ function signOut() {
 const searchIcon = document.getElementById('search-icon');
 const floatingSearch = document.getElementById('floating-search');
 const mobileSearchBox = document.getElementById('mobile-search-box');
+const desktopSearchBox = document.getElementById('search-box'); 
 
+//  FILTER FUNCTION FOR BOTH DESKTOP AND MOBILE
+function filterMovies(query) {
+  const allImages = document.querySelectorAll('.movie-thumbnails img');
+  allImages.forEach(img => {
+    const title = img.alt.toLowerCase();
+    img.style.display = title.includes(query) ? 'inline-block' : 'none';
+  });
+}
+
+// Mobile: click icon shows input
 searchIcon.addEventListener('click', () => {
-  // Only act on mobile
   if (window.innerWidth <= 768) {
     floatingSearch.style.display = 'block';
     mobileSearchBox.focus();
   } else {
-    // Desktop search
-    const desktopQuery = document.getElementById('search-box')?.value.trim().toLowerCase();
-    if (desktopQuery) {
-      console.log("Desktop Search:", desktopQuery);
+    const query = desktopSearchBox?.value.trim().toLowerCase();
+    if (query) {
+      filterMovies(query); //Call search
     }
   }
 });
 
-// Pressing Enter on mobile triggers search and hides input
-mobileSearchBox.addEventListener('keypress', (e) => {
+// Mobile: Enter key = filter + hide
+mobileSearchBox?.addEventListener('keypress', (e) => {
   if (e.key === 'Enter') {
     const query = mobileSearchBox.value.trim().toLowerCase();
     if (query) {
-      console.log("Mobile Search:", query);
+      filterMovies(query); 
     }
     floatingSearch.style.display = 'none';
   }
 });
 
-// Clicking outside hides the floating box
+// Desktop: Enter key also triggers search
+desktopSearchBox?.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    const query = desktopSearchBox.value.trim().toLowerCase();
+    if (query) {
+      filterMovies(query); 
+    }
+  }
+});
+
+// Mobile: clicking outside hides search
 document.addEventListener('click', (e) => {
   if (
     window.innerWidth <= 768 &&
