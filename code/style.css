@@ -354,3 +354,40 @@ nav a:hover {
   }
 }
 
+/* Default desktop style */
+#search-box {
+  width: 180px;
+  padding: 6px 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  background-color: white;
+  color: black;
+  outline: none;
+  transition: background-color 0.3s ease;
+}
+
+#search-box::placeholder {
+  color: #888;
+}
+
+/* Mobile Fixes */
+@media (max-width: 768px) {
+  #search-box {
+    display: none;
+    position: absolute;
+    top: 60px; /* below navbar */
+    right: 15px;
+    width: 70%;
+    z-index: 999;
+    display: none;
+  }
+
+  #search-box.active {
+    display: block;
+  }
+
+  .profile-icons {
+    gap: 15px;
+  }
+}

@@ -119,3 +119,24 @@ function signOut() {
   window.location.href = "login.html";
 }
 
+const searchIcon = document.getElementById('search-icon');
+const searchBox = document.getElementById('search-box');
+
+searchIcon.addEventListener('click', () => {
+  // If on mobile, toggle display
+  if (window.innerWidth <= 768) {
+    searchBox.classList.toggle('active');
+    if (searchBox.classList.contains('active')) {
+      searchBox.focus();
+    }
+  } else {
+    // Desktop search behavior
+    const query = searchBox.value.trim().toLowerCase();
+    if (query !== '') {
+      console.log("Searching for:", query);
+      // Filter movies here if needed
+    }
+  }
+});
+
+
