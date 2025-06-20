@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MyFlix Profile</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <header class="navbar">
+  <img src="../assets/images/logo.png" alt="MyFlix Logo" class="logo" />
+
+  <!-- Slide-in Nav Menu -->
+  <nav class="nav-menu">
+    <div class="mobile-slide-top">
+      <img src="../assets/images/logo.png" alt="MyFlix Logo" class="mobile-slide-logo" />
+      <div class="menu-btn close-btn">
+        <i class="fa fa-close"></i>
+      </div>
+    </div>
+
+    <a href="index.html"><i class="fa fa-home"></i> Home</a>
+    <a href="#"><i class="fa fa-tv"></i> Series</a>
+    <a href="#"><i class="fa fa-film"></i> Movies</a>
+    <a href="#"><i class="fa fa-bolt"></i> Popular</a>
+    <a href="#"><i class="fa fa-heart"></i> MyList</a>
+    <a href="#" class="active"><i class="fa fa-user"></i> Profile</a>
+    <button class="sign-out-btn" onclick="signOut()">
+      <i class="fa-solid fa-right-from-bracket"></i> Sign out
+    </button>
+  </nav>
+
+  <div class="profile-icons">
+    <input type="text" id="search-box" placeholder="Search..." />
+    <i class="fas fa-search" id="search-icon"></i>
+    <img src="../assets/images/profile.jpg" alt="Profile" class="profile-pic" />
+  </div>
+
+  <!-- Open Hamburger Icon -->
+  <div class="menu-open-btn">
+    <i class="fa fa-bars"></i>
+  </div>
+</header>
+
+  <main class="profile-section">
+    <h1>Welcome to Your Profile</h1>
+    <div class="profile-card">
+      <img src="../assets/images/profile.jpg" alt="Your Profile Picture" class="profile-avatar" />
+      <div class="profile-info">
+        <p><strong>Name:</strong> Jane Doe</p>
+        <p><strong>Email:</strong> jane.doe@example.com</p>
+        <p><strong>Member Since:</strong> Jan 2024</p>
+        <p><strong>Favorites:</strong> 12 movies</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    &copy; 2025 MyFlix. All rights reserved.
+    <br />
+    <a href="#">Privacy</a> | <a href="#">Terms</a> | <a href="#">Contact</a>
+  </footer>
+
+  <script>
+    function signOut() {
+      window.location.href = "login.html";
+    }
+  </script>
+
+  <style>
+    .profile-section {
+      padding: 100px 2rem 2rem; /* Added top padding to push below navbar */
+      color: white;
+      text-align: center;
+    }
+
+    .profile-card {
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 2rem;
+      max-width: 500px;
+      margin: 2rem auto;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .profile-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 2px solid white;
+    }
+
+    .profile-info p {
+      margin: 0.5rem 0;
+    }
+  </style>
+  <script src="script.js" defer></script>
+</body>
+</html>
