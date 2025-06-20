@@ -52,52 +52,52 @@ const movies = [
   }
 ];
 
+// Only run banner/movie row logic if elements exist
 const bannerTrack = document.querySelector('.banner .banner-track');
 const movieRows = document.querySelectorAll('.movie-row');
-const popularMovies = movieRows[0].querySelector('.movie-thumbnails');
-const topPicks = movieRows[1].querySelector('.movie-thumbnails');
 
-bannerTrack.innerHTML = '';
-popularMovies.innerHTML = '';
-topPicks.innerHTML = '';
+if (bannerTrack && movieRows.length >= 2) {
+  const popularMovies = movieRows[0].querySelector('.movie-thumbnails');
+  const topPicks = movieRows[1].querySelector('.movie-thumbnails');
 
-// Only first 5 for banners
-movies.slice(0, 5).forEach(movie => {
-  const bannerItem = document.createElement('div');
-  bannerItem.classList.add('banner-item');
-  bannerItem.style.backgroundImage = `url(${movie.image})`;
+  bannerTrack.innerHTML = '';
+  popularMovies.innerHTML = '';
+  topPicks.innerHTML = '';
 
-  bannerItem.innerHTML = `
-    <div class="banner-text">
-      <h2>${movie.title}</h2>
-      <p>${movie.description}</p>
-      <div class="banner-buttons">
-        <button class="play-btn">▶ Play</button>
-        <button class="add-btn">➕ Add to List</button>
+  movies.slice(0, 5).forEach(movie => {
+    const bannerItem = document.createElement('div');
+    bannerItem.classList.add('banner-item');
+    bannerItem.style.backgroundImage = `url(${movie.image})`;
+
+    bannerItem.innerHTML = `
+      <div class="banner-text">
+        <h2>${movie.title}</h2>
+        <p>${movie.description}</p>
+        <div class="banner-buttons">
+          <button class="play-btn">▶ Play</button>
+          <button class="add-btn">➕ Add to List</button>
+        </div>
       </div>
-    </div>
-  `;
+    `;
+    bannerTrack.appendChild(bannerItem);
+  });
 
-  bannerTrack.appendChild(bannerItem);
-});
+  movies.forEach(movie => {
+    const img = document.createElement('img');
+    img.src = movie.image;
+    img.alt = movie.title;
+    img.title = `${movie.title} - ${movie.description}`;
+    popularMovies.appendChild(img);
+  });
 
-// All movies for popular
-movies.forEach(movie => {
-  const img = document.createElement('img');
-  img.src = movie.image;
-  img.alt = movie.title;
-  img.title = `${movie.title} - ${movie.description}`;
-  popularMovies.appendChild(img);
-});
-
-// Top picks (first 10)
-movies.slice(0, 10).forEach(movie => {
-  const img = document.createElement('img');
-  img.src = movie.image;
-  img.alt = movie.title;
-  img.title = `${movie.title} - ${movie.description}`;
-  topPicks.appendChild(img);
-});
+  movies.slice(0, 10).forEach(movie => {
+    const img = document.createElement('img');
+    img.src = movie.image;
+    img.alt = movie.title;
+    img.title = `${movie.title} - ${movie.description}`;
+    topPicks.appendChild(img);
+  });
+}
 
 const openBtn = document.querySelector('.menu-open-btn');
 const closeBtn = document.querySelector('.close-btn');
