@@ -97,6 +97,27 @@
     .profile-info p {
       margin: 0.5rem 0;
     }
+
+    /* Make entire page a flex column */
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        margin: 0;
+    }
+
+    /* Let main content take up remaining space */
+    main {
+        flex: 1;
+    }
+
+    /* Optional footer styling */
+    .footer {
+        background-color: #111;
+        color: #aaa;
+        text-align: center;
+        padding: 20px;
+    }
   </style>
   <script src="script.js" defer></script>
 </body>
