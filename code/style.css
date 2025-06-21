@@ -420,3 +420,9 @@ nav a:hover {
     display: none !important;
   }
 }
+
+.mylist-section {
+  padding-top: 80px; /* or margin-top: 80px; */
+  text-align: center;
+  color: white;
+}

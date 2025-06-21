@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My List - MyFlix</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* Make entire page a flex column */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* Let main content take up remaining space */
+main {
+  flex: 1;
+}
+
+/* Optional footer styling */
+.footer {
+  background-color: #111;
+  color: #aaa;
+  text-align: center;
+  padding: 20px;
+}
+
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <img src="../assets/images/logo.png" alt="MyFlix Logo" class="logo" />
+
+    <nav class="nav-menu">
+      <div class="mobile-slide-top">
+        <img src="../assets/images/logo.png" alt="MyFlix Logo" class="mobile-slide-logo" />
+        <div class="menu-btn close-btn">
+          <i class="fa fa-close"></i>
+        </div>
+      </div>
+
+      <a href="index.html"><i class="fa fa-home"></i> Home</a>
+      <a href="#series"><i class="fa fa-tv"></i> Series</a>
+      <a href="#movies"><i class="fa fa-film"></i> Movies</a>
+      <a href="#popular"><i class="fa fa-bolt"></i> Popular</a>
+      <a href="mylist.html" class="active"><i class="fa fa-heart"></i> MyList</a>
+      <button class="sign-out-btn" onclick="signOut()">
+        <i class="fa-solid fa-right-from-bracket"></i> Sign out
+      </button>
+    </nav>
+
+    <div class="profile-icons">
+      <input type="text" id="search-box" placeholder="Search..." />
+      <i class="fas fa-search" id="search-icon"></i>
+      <a href="profile.html">
+        <img src="../assets/images/profile.jpg" alt="Profile" class="profile-pic" />
+      </a>
+    </div>
+
+    <div class="menu-open-btn">
+      <i class="fa fa-bars"></i>
+    </div>
+  </header>
+
+  <main class="mylist-section">
+    <h1>My List</h1>
+    <p>Your saved movies and series will appear here.</p>
+    <div class="movie-thumbnails" id="my-list-thumbnails">
+      <!-- Dynamically filled by JavaScript -->
+    </div>
+  </main>
+
+  <footer class="footer">
+    &copy; 2025 MyFlix. All rights reserved.
+    <br />
+    <a href="#">Privacy</a> | <a href="#">Terms</a> | <a href="#">Contact</a>
+  </footer>
+
+  <script src="script.js" defer></script>
+
+</body>
+</html>
