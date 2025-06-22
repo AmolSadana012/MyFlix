@@ -37,9 +37,9 @@ def logout():
 # Route: Profile Page
 @app.route('/profile')
 def profile():
-    if 'user' in session:
-        return render_template('profile.html')
-    return redirect(url_for('login'))
+    if 'user' not in session:
+        return redirect('/login')
+    return render_template('profile.html')
 
 # Route: My List Page
 @app.route('/mylist')
