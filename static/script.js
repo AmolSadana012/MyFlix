@@ -3,52 +3,52 @@ const movies = [
   {
     title: "To All The Boys I Have Loved Before",
     description: "A charming teen romance where a girl's secret love letters are unexpectedly sent out, turning her life upside down.",
-    image: "../assets/images/m1.jpg"
+    image: "static/images/m1.jpg"
   },
   {
     title: "Accountant 1",
     description: "A skilled accountant with a secretive life gets caught in a dangerous conspiracy involving crime and deception.",
-    image: "../assets/images/movie1.jpg"
+    image: "static/images/movie1.jpg"
   },
   {
     title: "The Last of Us",
     description: "In a post-apocalyptic world, a hardened survivor and a young girl form an unlikely bond while navigating deadly threats.",
-    image: "../assets/images/movie4.jpg"
+    image: "static/images/movie4.jpg"
   },
   {
     title: "Ballerina",
     description: "A young orphan dreams of becoming a ballet dancer and sets off on a journey to follow her passion and find her true self.",
-    image: "../assets/images/movie3.jpg"
+    image: "static/images/movie3.jpg"
   },
   {
     title: "Mercy Over None",
     description: "A gritty crime thriller where a detective faces moral dilemmas and dangerous criminals in pursuit of justice.",
-    image: "../assets/images/movie5.jpg"
+    image: "static/images/movie5.jpg"
   },
   {
     title: "Avengers: Endgame",
     description: "Heroes unite to defeat Thanos and restore the universe.",
-    image: "../assets/images/movie6.jpg"
+    image: "static/images/movie6.jpg"
   },
   {
     title: "Avengers: Endgame",
     description: "Heroes unite to defeat Thanos and restore the universe.",
-    image: "../assets/images/movie7.jpg"
+    image: "static/images/movie7.jpg"
   },
   {
     title: "Avengers: Endgame",
     description: "Heroes unite to defeat Thanos and restore the universe.",
-    image: "../assets/images/movie8.jpg"
+    image: "static/images/movie8.jpg"
   },
   {
     title: "Avengers: Endgame",
     description: "Heroes unite to defeat Thanos and restore the universe.",
-    image: "../assets/images/movie2.jpg"
+    image: "static/images/movie2.jpg"
   },
   {
     title: "Avengers: Endgame",
     description: "Heroes unite to defeat Thanos and restore the universe.",
-    image: "../assets/images/movie9.jpg"
+    image: "static/images/movie9.jpg"
   }
 ];
 
@@ -112,7 +112,7 @@ closeBtn.addEventListener('click', () => {
 });
 
 function signOut() {
-  window.location.href = "login.html";
+  window.location.href = "/logout";
 }
 
 const searchIcon = document.getElementById('search-icon');

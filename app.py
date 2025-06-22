@@ -1,0 +1,53 @@
+from flask import Flask, render_template, request, redirect, url_for, session
+
+app = Flask(__name__)
+app.secret_key = 'your_secret_key'  # Required for session handling
+
+# Dummy user for login demonstration
+USER_CREDENTIALS = {
+    "user": "pass"  # username: user, password: pass
+}
+
+# Route: Home Page
+@app.route('/')
+def home():
+    if 'user' in session:
+        return render_template('index.html')
+    return redirect(url_for('login'))
+
+# Route: Login Page
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        if username in USER_CREDENTIALS and USER_CREDENTIALS[username] == password:
+            session['user'] = username
+            return redirect(url_for('home'))
+        else:
+            return render_template('login.html', error=True)
+    return render_template('login.html', error=False)
+
+# Route: Logout
+@app.route('/logout')
+def logout():
+    session.pop('user', None)
+    return redirect(url_for('login'))
+
+# Route: Profile Page
+@app.route('/profile')
+def profile():
+    if 'user' in session:
+        return render_template('profile.html')
+    return redirect(url_for('login'))
+
+# Route: My List Page
+@app.route('/mylist')
+def mylist():
+    if 'user' in session:
+        return render_template('mylist.html')
+    return redirect(url_for('login'))
+
+# Run the Flask app
+if __name__ == '__main__':
+    app.run(debug=True)

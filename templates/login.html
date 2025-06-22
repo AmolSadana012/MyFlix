@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Login MyFlix</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="static\style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     /* body {
@@ -19,7 +19,7 @@
     } */
 
     body {
-        background: url("../assets/images/banner.jpg") no-repeat center center/cover;
+        background: url("static/images/banner.jpg") no-repeat center center/cover;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -84,13 +84,18 @@
     
   <div class="login-container">
     <h2><i class="fa fa-user"></i> Login to MyFlix</h2>
-    <input type="text" id="username" placeholder="Username" required />
-    <input type="password" id="password" placeholder="Password" required />
-    <button onclick="login()">Sign In</button>
-    <div class="error" id="error-msg">Invalid username or password</div>
+    <form method="POST" action="/login">
+      <input type="text" name="username" placeholder="Username" required />
+      <input type="password" name="password" placeholder="Password" required />
+      <button type="submit">Sign In</button>
+    </form>
+
+    {% if error %}
+    <div class="error">{{ error }}</div>
+    {% endif %}
   </div>
 
-  <script>
+  <!-- <script>
     function login() {
       const username = document.getElementById("username").value.trim();
       const password = document.getElementById("password").value.trim();
@@ -108,6 +113,6 @@
         errorMsg.style.display = "block";
       }
     }
-  </script>
+  </script> -->
 </body>
 </html>
