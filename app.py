@@ -11,16 +11,20 @@ with open('movies.json') as f:
 
 @app.route('/api/search')
 def api_search():
-    query = request.args.get('q', '').lower()
+    query = request.args.get('q', '').strip().lower()
     if not query:
         return jsonify([])
 
     results = [
         movie for movie in MOVIES
-        if movie['title'].lower().startswith(query) or movie['description'].lower().startswith(query)
+        if movie['title'].strip().lower().startswith(query)
+        or movie['description'].strip().lower().startswith(query)
     ]
 
-    return jsonify(results)
+    # print(f"User query: {query}")
+    # print(f"Matched movies: {[movie['title'] for movie in results]}")
+
+    return jsonify(results[:5])  
 
 # Dummy user for login demonstration
 USER_CREDENTIALS = {
