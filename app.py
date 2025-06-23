@@ -1,7 +1,26 @@
 from flask import Flask, render_template, request, redirect, url_for, session
+import json
+from flask import jsonify
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Required for session handling
+
+# Load movie data once on server start
+with open('movies.json') as f:
+    MOVIES = json.load(f)
+
+@app.route('/api/search')
+def api_search():
+    query = request.args.get('q', '').lower()
+    if not query:
+        return jsonify([])
+
+    results = [
+        movie for movie in MOVIES
+        if movie['title'].lower().startswith(query) or movie['description'].lower().startswith(query)
+    ]
+
+    return jsonify(results)
 
 # Dummy user for login demonstration
 USER_CREDENTIALS = {

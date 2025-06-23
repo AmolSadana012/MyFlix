@@ -173,3 +173,66 @@ document.addEventListener('click', (e) => {
     floatingSearch.style.display = 'none';
   }
 });
+
+const mobileSuggestions = document.getElementById('mobile-suggestions');
+const desktopSuggestions = document.getElementById('desktop-suggestions');
+
+// Fetch search suggestions
+async function fetchSuggestions(query) {
+  const res = await fetch(`/api/search?q=${encodeURIComponent(query)}`);
+  return await res.json();
+}
+
+// Handle search for both mobile & desktop
+function showSuggestions(box, query, results) {
+  if (!results.length) {
+    box.innerHTML = '<div>No matches found</div>';
+  } else {
+    box.innerHTML = results.map(movie => `<div>${movie.title}</div>`).join('');
+  }
+  box.style.display = 'block';
+
+  box.querySelectorAll('div').forEach(div => {
+    div.addEventListener('click', () => {
+      if (box === mobileSuggestions) {
+        mobileSearchBox.value = div.textContent;
+      } else {
+        desktopSearchBox.value = div.textContent;
+      }
+      filterMovies(div.textContent.toLowerCase());
+      box.style.display = 'none';
+    });
+  });
+}
+
+// Desktop: input event for search suggestions
+desktopSearchBox?.addEventListener('input', async () => {
+  const query = desktopSearchBox.value.trim().toLowerCase();
+  if (query.length === 0) {
+    desktopSuggestions.style.display = 'none';
+    return;
+  }
+  const data = await fetchSuggestions(query);
+  showSuggestions(desktopSuggestions, query, data);
+});
+
+// Mobile: input event for search suggestions
+mobileSearchBox?.addEventListener('input', async () => {
+  const query = mobileSearchBox.value.trim().toLowerCase();
+  if (query.length === 0) {
+    mobileSuggestions.style.display = 'none';
+    return;
+  }
+  const data = await fetchSuggestions(query);
+  showSuggestions(mobileSuggestions, query, data);
+});
+
+// Hide suggestion boxes on click outside
+document.addEventListener('click', (e) => {
+  if (!mobileSuggestions.contains(e.target) && e.target !== mobileSearchBox) {
+    mobileSuggestions.style.display = 'none';
+  }
+  if (!desktopSuggestions.contains(e.target) && e.target !== desktopSearchBox) {
+    desktopSuggestions.style.display = 'none';
+  }
+});
