@@ -35,8 +35,11 @@
   </nav>
 
   <div class="profile-icons">
-    <input type="text" id="search-box" placeholder="Search..." />
-    <i class="fas fa-search" id="search-icon"></i>
+    <div class="search-container">
+      <input type="text" id="search-box" placeholder="Search..." />
+      <i class="fas fa-search" id="search-icon"></i>
+      <div class="suggestions-box" id="desktop-suggestions"></div>
+    </div>
     <a href="/profile">
       <img src="static\images\profile.jpg" alt="Profile" class="profile-pic" />
     </a>
@@ -74,7 +77,6 @@
     <input type="text" id="mobile-search-box" placeholder="Search..." />
     <div class="suggestions-box" id="mobile-suggestions"></div>
   </div>
-  <div class="suggestions-box" id="desktop-suggestions"></div>
 
   <script src="static\script.js" defer></script>
 
