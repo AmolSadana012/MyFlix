@@ -388,7 +388,7 @@ nav a:hover {
   }
 
   .profile-icons {
-    gap: 15px;
+    gap: 50px;
   }
 }
 
@@ -473,15 +473,16 @@ nav a:hover {
     display: flex;
     align-items: center;
   }
-
   .search-container input {
     display: none;
   }
-
-  .suggestions-box {
-    display: none !important;
+  #desktop-suggestions {
+    display: none !important;  /* Only hide desktop version on mobile */
+  }
+  /* Allow mobile-suggestions to be shown by JS */
+  #mobile-suggestions {
+    display: none; /* default hidden, JS will set it to block */
   }
 }
-
 
 
