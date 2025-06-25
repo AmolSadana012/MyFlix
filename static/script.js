@@ -284,9 +284,29 @@ chatbotInput.addEventListener('keypress', function (e) {
   }
 });
 
+const emojiBtn = document.getElementById('emoji-btn');
+// Initialize emoji picker
+const picker = new EmojiButton({
+  position: 'top-end', 
+  theme: 'dark',      
+});
+
+// Toggle picker on emoji button click
+emojiBtn.addEventListener('click', () => {
+  picker.togglePicker(emojiBtn);
+});
+
+// Insert emoji into input when selected
+picker.on('emoji', emoji => {
+  chatbotInput.value += emoji;
+  chatbotInput.focus();
+});
+
+
 });
 document.getElementById('chatbot-close').addEventListener('click', () => {
   chatbotWindow.style.display = 'none';
   chatbotToggle.style.display = 'block';
 });
+
 

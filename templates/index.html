@@ -83,11 +83,15 @@
     <div id="chatbot-toggle"><i class="fas fa-robot"></i> Chat</div>
     <div id="chatbot-window" class="hidden">
       <div id="chatbot-header">MyFlix Chatbot<span id="chatbot-close" style="float: right; cursor: pointer;">✖</span></div>
-      <div id="chatbot-messages"></div>
-      <input type="text" id="chatbot-input" placeholder="Ask me something..." />
+      <div id="chatbot-messages" class="chat-body"></div>
+      <div class="chat-input-area">
+        <button id="emoji-btn" title="Emoji Picker" style="margin-left: 8px; font-size: 22px;">😊</button>
+        <input type="text" id="chatbot-input" placeholder="Ask me something..." />
+      </div>
     </div>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/@joeattardi/emoji-button@4.6.2/dist/index.umd.min.js"></script>
   <script src="static\script.js" defer></script>
 
 </body>
