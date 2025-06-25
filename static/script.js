@@ -285,23 +285,27 @@ chatbotInput.addEventListener('keypress', function (e) {
 });
 
 const emojiBtn = document.getElementById('emoji-btn');
-// Initialize emoji picker
-const picker = new EmojiButton({
-  position: 'top-end', 
-  theme: 'dark',      
-});
-
-// Toggle picker on emoji button click
+const emojiPicker = document.getElementById('emoji-picker');
+// Toggle emoji picker visibility
 emojiBtn.addEventListener('click', () => {
-  picker.togglePicker(emojiBtn);
+  emojiPicker.classList.toggle('hidden');
 });
 
-// Insert emoji into input when selected
-picker.on('emoji', emoji => {
-  chatbotInput.value += emoji;
-  chatbotInput.focus();
+// Add emoji to input on click
+emojiPicker.addEventListener('click', (e) => {
+  if (e.target.tagName === 'SPAN') {
+    chatbotInput.value += e.target.textContent;
+    chatbotInput.focus();
+    emojiPicker.classList.add('hidden'); // optional
+  }
 });
 
+// Optional: hide if clicked outside
+document.addEventListener('click', (e) => {
+  if (!emojiPicker.contains(e.target) && e.target !== emojiBtn) {
+    emojiPicker.classList.add('hidden');
+  }
+});
 
 });
 document.getElementById('chatbot-close').addEventListener('click', () => {

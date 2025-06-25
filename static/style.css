@@ -599,3 +599,29 @@ nav a:hover {
   font-size: 22px;
   padding: 5px;
 }
+.emoji-picker {
+  position: absolute;
+  bottom: 60px;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 24px;
+  z-index: 999;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  max-width: 300px;
+}
+.emoji-picker span {
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+.emoji-picker span:hover {
+  background-color: #f0f0f0;
+}
+.hidden {
+  display: none;
+}
