@@ -1,9 +1,19 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 import json
 from flask import jsonify
+import openai
+from flask_cors import CORS
+from dotenv import load_dotenv
+import os
+
+
+load_dotenv()  # loads from .env
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Required for session handling
+CORS(app) 
+
 
 # Load movie data once on server start
 with open('movies.json') as f:
@@ -70,6 +80,24 @@ def mylist():
     if 'user' in session:
         return render_template('mylist.html')
     return redirect(url_for('login'))
+
+@app.route('/chat', methods=['POST'])
+def chat():
+    data = request.get_json()
+    user_msg = data.get("message", "")
+
+    try:
+        response = openai.chat.completions.create(
+            model="gpt-3.5-turbo", 
+            messages=[
+                {"role": "system", "content": "You are a movie recommendation chatbot for a site called MyFlix."},
+                {"role": "user", "content": user_msg}
+            ]
+        )
+        bot_reply = response.choices[0].message.content
+        return jsonify({"reply": bot_reply})
+    except Exception as e:
+        return jsonify({"reply": f"Sorry, an error occurred: {str(e)}"})
 
 # Run the Flask app
 if __name__ == '__main__':

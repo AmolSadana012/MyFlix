@@ -238,18 +238,27 @@ document.addEventListener('click', (e) => {
 });
 
 // Chatbot
+// Chatbot
 const chatbotToggle = document.getElementById('chatbot-toggle');
 const chatbotWindow = document.getElementById('chatbot-window');
+const chatbotInput = document.getElementById('chatbot-input');
+const chatbotMessages = document.getElementById('chatbot-messages');
+const emojiBtn = document.getElementById('emoji-btn');
+const emojiPicker = document.getElementById('emoji-picker');
 
 chatbotToggle.style.display = 'block';
 chatbotWindow.style.display = 'none';
 
 chatbotToggle.addEventListener('click', () => {
   chatbotToggle.style.display = 'none';
-  chatbotWindow.style.display = 'flex'; // show chatbot
+  chatbotWindow.style.display = 'flex';
+  chatbotInput.focus();
+});
 
-const chatbotInput = document.getElementById('chatbot-input');
-const chatbotMessages = document.getElementById('chatbot-messages');
+document.getElementById('chatbot-close').addEventListener('click', () => {
+  chatbotWindow.style.display = 'none';
+  chatbotToggle.style.display = 'block';
+});
 
 // Function to append messages to the chat window
 function appendMessage(sender, text) {
@@ -259,17 +268,26 @@ function appendMessage(sender, text) {
   chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
 }
 
-// Dummy bot replies
-function getBotReply(message) {
-  const msg = message.toLowerCase();
-  if (msg.includes("recommend")) return "Try watching 'The Last of Us' or 'Ballerina'.";
-  if (msg.includes("hello") || msg.includes("hi")) return "Hello! How can I help you?";
-  if (msg.includes("mylist")) return "Your MyList saves all your favorite shows!";
-  return "I'm still learning. Try asking about a movie recommendation!";
+// 🧠 NEW: AI-powered backend call
+async function getBotReply(message) {
+  try {
+    const response = await fetch("http://127.0.0.1:5000/chat", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ message })
+    });
+
+    const data = await response.json();
+    return data.reply;
+  } catch (error) {
+    return "Sorry, I couldn’t connect to the server.";
+  }
 }
 
 // When user presses Enter
-chatbotInput.addEventListener('keypress', function (e) {
+chatbotInput.addEventListener('keypress', async function (e) {
   if (e.key === "Enter") {
     const userMsg = chatbotInput.value.trim();
     if (userMsg === "") return;
@@ -277,40 +295,26 @@ chatbotInput.addEventListener('keypress', function (e) {
     appendMessage("You", userMsg);
     chatbotInput.value = "";
 
-    setTimeout(() => {
-      const botReply = getBotReply(userMsg);
-      appendMessage("Bot", botReply);
-    }, 500);
+    const botReply = await getBotReply(userMsg);
+    appendMessage("MyFlix Bot", botReply);
   }
 });
 
-const emojiBtn = document.getElementById('emoji-btn');
-const emojiPicker = document.getElementById('emoji-picker');
-// Toggle emoji picker visibility
+// Emoji picker logic
 emojiBtn.addEventListener('click', () => {
   emojiPicker.classList.toggle('hidden');
 });
 
-// Add emoji to input on click
 emojiPicker.addEventListener('click', (e) => {
   if (e.target.tagName === 'SPAN') {
     chatbotInput.value += e.target.textContent;
     chatbotInput.focus();
-    emojiPicker.classList.add('hidden'); // optional
+    emojiPicker.classList.add('hidden');
   }
 });
 
-// Optional: hide if clicked outside
 document.addEventListener('click', (e) => {
   if (!emojiPicker.contains(e.target) && e.target !== emojiBtn) {
     emojiPicker.classList.add('hidden');
   }
 });
-
-});
-document.getElementById('chatbot-close').addEventListener('click', () => {
-  chatbotWindow.style.display = 'none';
-  chatbotToggle.style.display = 'block';
-});
-
-
