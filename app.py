@@ -1,14 +1,18 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 import json
 from flask import jsonify
-import openai
+# import openai
 from flask_cors import CORS
 from dotenv import load_dotenv
 import os
+import requests
+from dotenv import load_dotenv
+load_dotenv()
+# HF_TOKEN = os.getenv("HF_TOKEN")
 
 
 load_dotenv()  # loads from .env
-openai.api_key = os.getenv("OPENAI_API_KEY")
+# openai.api_key = os.getenv("OPENAI_API_KEY")
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Required for session handling
@@ -87,15 +91,37 @@ def chat():
     user_msg = data.get("message", "")
 
     try:
-        response = openai.chat.completions.create(
-            model="gpt-3.5-turbo", 
-            messages=[
-                {"role": "system", "content": "You are a movie recommendation chatbot for a site called MyFlix."},
-                {"role": "user", "content": user_msg}
-            ]
-        )
-        bot_reply = response.choices[0].message.content
+        HF_TOKEN = os.getenv("HF_TOKEN")
+        headers = {
+            "Authorization": f"Bearer {HF_TOKEN}",
+            "Content-Type": "application/json"
+        }
+
+        api_url = "https://api-inference.huggingface.co/models/HuggingFaceH4/zephyr-7b-beta"
+
+        payload = {
+            "inputs": f"""
+            You are a friendly and intelligent movie recommendation chatbot on MyFlix.
+            Respond naturally based on what the user says — if it's just a greeting, greet them. If they ask for a movie, recommend movies.
+
+            User: {user_msg}
+            Assistant:"""
+
+        }
+
+        response = requests.post(api_url, headers=headers, json=payload)
+        print("Raw response:", response.text)
+
+        result = response.json()
+
+        # Handle the response
+        if isinstance(result, list) and "generated_text" in result[0]:
+            bot_reply = result[0]["generated_text"]
+        else:
+            bot_reply = "Hmm, I didn't get a valid response."
+
         return jsonify({"reply": bot_reply})
+
     except Exception as e:
         return jsonify({"reply": f"Sorry, an error occurred: {str(e)}"})
 
