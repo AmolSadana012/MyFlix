@@ -97,26 +97,30 @@ def chat():
             "Content-Type": "application/json"
         }
 
-        api_url = "https://api-inference.huggingface.co/models/HuggingFaceH4/zephyr-7b-beta"
+        SYSTEM_PROMPT = (
+            "You are a friendly and intelligent movie recommendation chatbot on MyFlix. "
+            "Respond naturally based on what the user says — if it's just a greeting, greet them. "
+            "If they ask for a movie, recommend movies.\n\n"
+        )
 
         payload = {
-            "inputs": f"""
-            You are a friendly and intelligent movie recommendation chatbot on MyFlix.
-            Respond naturally based on what the user says — if it's just a greeting, greet them. If they ask for a movie, recommend movies.
-
-            User: {user_msg}
-            Assistant:"""
-
+            "inputs": f"{SYSTEM_PROMPT}User: {user_msg}\nAssistant:"
         }
 
-        response = requests.post(api_url, headers=headers, json=payload)
-        print("Raw response:", response.text)
+        response = requests.post(
+            "https://api-inference.huggingface.co/models/HuggingFaceH4/zephyr-7b-beta",
+            headers=headers,
+            json=payload
+        )
 
         result = response.json()
+        print("Raw response:", result)
 
-        # Handle the response
         if isinstance(result, list) and "generated_text" in result[0]:
             bot_reply = result[0]["generated_text"]
+            # Strip out everything before final "Assistant:" to avoid prompt repetition
+            if "Assistant:" in bot_reply:
+                bot_reply = bot_reply.split("Assistant:")[-1].strip()
         else:
             bot_reply = "Hmm, I didn't get a valid response."
 
