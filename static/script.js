@@ -262,9 +262,17 @@ document.getElementById('chatbot-close').addEventListener('click', () => {
 
 // Function to append messages to the chat window
 function appendMessage(sender, text) {
-  const msg = document.createElement("div");
-  msg.innerHTML = `<strong>${sender}:</strong> ${text}`;
-  chatbotMessages.appendChild(msg);
+  const messageDiv = document.createElement("div");
+  messageDiv.classList.add("chat-message");
+
+  if (sender === "You") {
+    messageDiv.classList.add("user-message");
+  } else {
+    messageDiv.classList.add("bot-message");
+  }
+
+  messageDiv.textContent = text;
+  chatbotMessages.appendChild(messageDiv);
   chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
 }
 
