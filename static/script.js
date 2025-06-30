@@ -261,33 +261,51 @@ document.getElementById('chatbot-close').addEventListener('click', () => {
 
 // Function to append messages to the chat window
 function appendMessage(sender, text) {
-  const wrapperDiv = document.createElement("div"); // Wrapper holds name and message
-  wrapperDiv.classList.add("chat-wrapper");
+  const wrapper = document.createElement("div");
+  wrapper.classList.add("chat-message-block");
 
-  const nameDiv = document.createElement("div");
-  nameDiv.classList.add("sender-label");
-  nameDiv.innerText = sender;
-
-  const messageDiv = document.createElement("div");
-  messageDiv.classList.add("chat-message");
-
+  // Add alignment class
   if (sender === "You") {
-    messageDiv.classList.add("user-message");
-    nameDiv.classList.add("sender-user");
+    wrapper.classList.add("user-block");
   } else {
-    messageDiv.classList.add("bot-message");
-    nameDiv.classList.add("sender-bot");
+    wrapper.classList.add("bot-block");
   }
 
-  messageDiv.innerText = text;
+  // Sender label
+const label = document.createElement("div");
+label.classList.add("sender-label");
 
-  wrapperDiv.appendChild(nameDiv);    // Add name first
-  wrapperDiv.appendChild(messageDiv); // Then the bubble
+// Create container to align name and time together
+const labelContent = document.createElement("div");
+labelContent.style.display = "flex";
+labelContent.style.gap = "8px";
+labelContent.style.justifyContent = sender === "You" ? "flex-end" : "flex-start";
+labelContent.style.width = "100%";
 
-  chatbotMessages.appendChild(wrapperDiv);
+const nameEl = document.createElement("strong");
+nameEl.textContent = sender;
+
+const timeEl = document.createElement("span");
+timeEl.classList.add("message-time");
+timeEl.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+labelContent.appendChild(nameEl);
+labelContent.appendChild(timeEl);
+label.appendChild(labelContent);
+
+
+  // Message bubble
+  const messageBubble = document.createElement("div");
+  messageBubble.classList.add("chat-message");
+  messageBubble.classList.add(sender === "You" ? "user-message" : "bot-message");
+  messageBubble.innerHTML = `<div class="message-text">${text}</div>`;
+
+  // Combine and append
+  wrapper.appendChild(label);
+  wrapper.appendChild(messageBubble);
+  chatbotMessages.appendChild(wrapper);
   chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
 }
-
 
 // NEW: AI-powered backend call
 async function getBotReply(message) {
