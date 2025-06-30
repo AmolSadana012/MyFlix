@@ -238,7 +238,6 @@ document.addEventListener('click', (e) => {
 });
 
 // Chatbot
-// Chatbot
 const chatbotToggle = document.getElementById('chatbot-toggle');
 const chatbotWindow = document.getElementById('chatbot-window');
 const chatbotInput = document.getElementById('chatbot-input');
@@ -262,19 +261,33 @@ document.getElementById('chatbot-close').addEventListener('click', () => {
 
 // Function to append messages to the chat window
 function appendMessage(sender, text) {
+  const wrapperDiv = document.createElement("div"); // Wrapper holds name and message
+  wrapperDiv.classList.add("chat-wrapper");
+
+  const nameDiv = document.createElement("div");
+  nameDiv.classList.add("sender-label");
+  nameDiv.innerText = sender;
+
   const messageDiv = document.createElement("div");
   messageDiv.classList.add("chat-message");
 
   if (sender === "You") {
     messageDiv.classList.add("user-message");
+    nameDiv.classList.add("sender-user");
   } else {
     messageDiv.classList.add("bot-message");
+    nameDiv.classList.add("sender-bot");
   }
 
-  messageDiv.textContent = text;
-  chatbotMessages.appendChild(messageDiv);
+  messageDiv.innerText = text;
+
+  wrapperDiv.appendChild(nameDiv);    // Add name first
+  wrapperDiv.appendChild(messageDiv); // Then the bubble
+
+  chatbotMessages.appendChild(wrapperDiv);
   chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
 }
+
 
 // NEW: AI-powered backend call
 async function getBotReply(message) {
