@@ -293,7 +293,6 @@ labelContent.appendChild(nameEl);
 labelContent.appendChild(timeEl);
 label.appendChild(labelContent);
 
-
   // Message bubble
   const messageBubble = document.createElement("div");
   messageBubble.classList.add("chat-message");
