@@ -703,3 +703,29 @@ nav a:hover {
   align-self: flex-start;
   background-color: #fff;
 }
+
+.typing-indicator {
+  font-size: 14px;
+  color: #888;
+  margin: 10px;
+  padding-left: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+.dots::after {
+  content: "";
+  display: inline-block;
+  animation: dots 1s steps(3, end) infinite;
+  width: 1em;
+}
+
+@keyframes dots {
+  0% { content: ""; }
+  33% { content: "."; }
+  66% { content: ".."; }
+  100% { content: "..."; }
+}
+

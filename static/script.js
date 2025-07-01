@@ -244,6 +244,7 @@ const chatbotInput = document.getElementById('chatbot-input');
 const chatbotMessages = document.getElementById('chatbot-messages');
 const emojiBtn = document.getElementById('emoji-btn');
 const emojiPicker = document.getElementById('emoji-picker');
+const typingIndicator = document.getElementById('typing-indicator');
 
 chatbotToggle.style.display = 'block';
 chatbotWindow.style.display = 'none';
@@ -295,6 +296,7 @@ function appendMessage(sender, text) {
 // NEW: AI-powered backend call
 async function getBotReply(message) {
   try {
+    typingIndicator.classList.remove('hidden'); //Show typing
     const response = await fetch("http://127.0.0.1:5000/chat", {
       method: "POST",
       headers: {
@@ -307,6 +309,8 @@ async function getBotReply(message) {
     return data.reply;
   } catch (error) {
     return "Sorry, I couldn’t connect to the server.";
+  } finally {
+    typingIndicator.classList.add('hidden'); // Hide typing after bot reply
   }
 }
 
