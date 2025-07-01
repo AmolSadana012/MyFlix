@@ -263,48 +263,34 @@ document.getElementById('chatbot-close').addEventListener('click', () => {
 function appendMessage(sender, text) {
   const wrapper = document.createElement("div");
   wrapper.classList.add("chat-message-block");
-
-  // Add alignment class
-  if (sender === "You") {
-    wrapper.classList.add("user-block");
-  } else {
-    wrapper.classList.add("bot-block");
-  }
-
-  // Sender label
-const label = document.createElement("div");
-label.classList.add("sender-label");
-
-// Create container to align name and time together
-const labelContent = document.createElement("div");
-labelContent.style.display = "flex";
-labelContent.style.gap = "8px";
-labelContent.style.justifyContent = sender === "You" ? "flex-end" : "flex-start";
-labelContent.style.width = "100%";
-
-const nameEl = document.createElement("strong");
-nameEl.textContent = sender;
-
-const timeEl = document.createElement("span");
-timeEl.classList.add("message-time");
-timeEl.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-
-labelContent.appendChild(nameEl);
-labelContent.appendChild(timeEl);
-label.appendChild(labelContent);
-
+  wrapper.classList.add(sender === "You" ? "user-block" : "bot-block");
+  // Sender label (You or Bot)
+  const nameEl = document.createElement("div");
+  nameEl.classList.add("sender-label");
+  nameEl.textContent = sender;
   // Message bubble
   const messageBubble = document.createElement("div");
   messageBubble.classList.add("chat-message");
   messageBubble.classList.add(sender === "You" ? "user-message" : "bot-message");
-  messageBubble.innerHTML = `<div class="message-text">${text}</div>`;
-
-  // Combine and append
-  wrapper.appendChild(label);
+  // Message text
+  const messageText = document.createElement("div");
+  messageText.classList.add("message-text");
+  messageText.innerHTML = text;
+  // Time below the message
+  const timeEl = document.createElement("div");
+  timeEl.classList.add("message-time");
+  timeEl.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  // Combine parts
+  messageBubble.appendChild(messageText);
+  // Append to wrapper
+  wrapper.appendChild(nameEl);
   wrapper.appendChild(messageBubble);
+  wrapper.appendChild(timeEl); // Now time comes OUTSIDE the bubble
+  // Append to chat
   chatbotMessages.appendChild(wrapper);
   chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
 }
+
 
 // NEW: AI-powered backend call
 async function getBotReply(message) {
@@ -328,13 +314,13 @@ async function getBotReply(message) {
 chatbotInput.addEventListener('keypress', async function (e) {
   if (e.key === "Enter") {
     const userMsg = chatbotInput.value.trim();
-    if (userMsg === "") return;
+    if (userMsg !== "") {
+  appendMessage("You", userMsg);
+  chatbotInput.value = "";
 
-    appendMessage("You", userMsg);
-    chatbotInput.value = "";
-
-    const botReply = await getBotReply(userMsg);
-    appendMessage("MyFlix Bot", botReply);
+  const botReply = await getBotReply(userMsg);
+  appendMessage("ChatBot", botReply);
+}
   }
 });
 
