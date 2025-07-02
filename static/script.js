@@ -349,6 +349,7 @@ document.addEventListener('click', (e) => {
 
 const voiceSearchBtn = document.getElementById('voice-search-btn');
 const voiceIcon = document.getElementById('voice-icon');
+// const listeningMessage = document.getElementById('listening-message');
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
 if (SpeechRecognition) {
@@ -359,11 +360,14 @@ if (SpeechRecognition) {
   recognition.onstart = () => {
     voiceIcon.className = 'fa-solid fa-microphone';
     voiceIcon.style.color = 'black';
+    // console.log("Voice recognition started");
+    listeningMessage.classList.remove('hidden');
   };
 
   recognition.onend = () => {
     voiceIcon.className = 'fa-solid fa-microphone-slash';
     voiceIcon.style.color = 'black';
+    listeningMessage.classList.add('hidden');
   };
 
   recognition.onresult = (event) => {

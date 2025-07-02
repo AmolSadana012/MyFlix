@@ -729,3 +729,13 @@ nav a:hover {
   100% { content: "..."; }
 }
 
+#listening-message {
+  margin-left: 8px;
+  color: black;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.hidden {
+  display: none;
+}
