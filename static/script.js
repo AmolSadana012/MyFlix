@@ -346,3 +346,44 @@ document.addEventListener('click', (e) => {
     emojiPicker.classList.add('hidden');
   }
 });
+
+const voiceSearchBtn = document.getElementById('voice-search-btn');
+const voiceIcon = document.getElementById('voice-icon');
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+if (SpeechRecognition) {
+  const recognition = new SpeechRecognition();
+  recognition.lang = 'en-US';
+  recognition.continuous = false;
+
+  recognition.onstart = () => {
+    voiceIcon.className = 'fa-solid fa-microphone';
+    voiceIcon.style.color = 'black';
+  };
+
+  recognition.onend = () => {
+    voiceIcon.className = 'fa-solid fa-microphone-slash';
+    voiceIcon.style.color = 'black';
+  };
+
+  recognition.onresult = (event) => {
+    const transcript = event.results[0][0].transcript.trim().toLowerCase();
+    console.log("Voice Input:", transcript);
+
+    // Fill it into the right box and trigger search
+    if (window.innerWidth <= 768) {
+      mobileSearchBox.value = transcript;
+      filterMovies(transcript);
+    } else {
+      desktopSearchBox.value = transcript;
+      filterMovies(transcript);
+    }
+  };
+
+  voiceSearchBtn.addEventListener('click', () => {
+    recognition.start();
+  });
+} else {
+  console.warn("Speech recognition not supported in this browser.");
+  voiceSearchBtn.style.display = 'none';
+}

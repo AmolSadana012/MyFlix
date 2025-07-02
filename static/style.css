@@ -452,7 +452,7 @@ nav a:hover {
 .search-container {
   position: relative;
   display: inline-block;
-  width: 220px; /* adjust to match input box width */
+  width: 290px; /* adjust to match input box width */
 }
 
 .search-container input {
