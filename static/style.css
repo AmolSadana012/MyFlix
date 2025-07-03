@@ -739,3 +739,9 @@ nav a:hover {
 .hidden {
   display: none;
 }
+
+@media (max-width: 768px) {
+  #voice-search-btn {
+    margin-right: 32px;
+  }
+}
