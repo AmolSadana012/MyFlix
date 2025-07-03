@@ -10,14 +10,12 @@ from dotenv import load_dotenv
 load_dotenv()
 # HF_TOKEN = os.getenv("HF_TOKEN")
 
-
 load_dotenv()  # loads from .env
 # openai.api_key = os.getenv("OPENAI_API_KEY")
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Required for session handling
 CORS(app) 
-
 
 # Load movie data once on server start
 with open('movies.json') as f:
