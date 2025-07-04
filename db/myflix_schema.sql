@@ -19,7 +19,7 @@ CREATE TABLE movies (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
--- Watchlist Table (User-Movie relationship)
+-- Watchlist Table
 CREATE TABLE mylist (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
@@ -29,7 +29,7 @@ CREATE TABLE mylist (
     FOREIGN KEY (movie_id) REFERENCES movies(id) ON DELETE CASCADE
 );
 
--- Chat Logs (Optional - AI chatbot history)
+-- Chat Logs
 CREATE TABLE chat_logs (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE chat_logs (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
--- Voice Logs (Optional - voice command history)
+-- Voice Logs
 CREATE TABLE voice_logs (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
