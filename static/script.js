@@ -6,7 +6,7 @@ const movies = [
     image: "static/images/m1.jpg"
   },
   {
-    title: "Accountant 1",
+    title: "The Accountant 2",
     description: "A skilled accountant with a secretive life gets caught in a dangerous conspiracy involving crime and deception.",
     image: "static/images/movie1.jpg"
   },
@@ -26,28 +26,28 @@ const movies = [
     image: "static/images/movie5.jpg"
   },
   {
-    title: "Avengers: Endgame",
-    description: "Heroes unite to defeat Thanos and restore the universe.",
+    title: "Sinners",
+    description: "A criminal twin brothers who return to their hometown to start again where they are confronted by a supernatural evil.",
     image: "static/images/movie6.jpg"
   },
   {
-    title: "Avengers: Endgame",
-    description: "Heroes unite to defeat Thanos and restore the universe.",
+    title: "Ginny & Georgia",
+    description: "A single mom named Georgia who moves with her two kids, Ginny and Austin, to an affluent town in Massachusetts to give them a better life.",
     image: "static/images/movie7.jpg"
   },
   {
-    title: "Avengers: Endgame",
-    description: "Heroes unite to defeat Thanos and restore the universe.",
+    title: "The Survivors",
+    description: "The Survivors tells the stories of four people who mysteriously lost their lives in a small coastal town in Australia.",
     image: "static/images/movie8.jpg"
   },
   {
-    title: "Avengers: Endgame",
-    description: "Heroes unite to defeat Thanos and restore the universe.",
+    title: "The Accountant",
+    description: "Christian Wolff, an autistic certified public accountant who makes his living sanitizing fraudulent financial.",
     image: "static/images/movie2.jpg"
   },
   {
-    title: "Avengers: Endgame",
-    description: "Heroes unite to defeat Thanos and restore the universe.",
+    title: "Anora",
+    description: "A stripper from New York who impulsively marries Vanya.",
     image: "static/images/movie9.jpg"
   }
 ];
