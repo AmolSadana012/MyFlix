@@ -8,6 +8,7 @@ import os
 import requests
 from dotenv import load_dotenv
 load_dotenv()
+import mysql.connector
 # HF_TOKEN = os.getenv("HF_TOKEN")
 
 load_dotenv()  # loads from .env
@@ -126,6 +127,25 @@ def chat():
 
     except Exception as e:
         return jsonify({"reply": f"Sorry, an error occurred: {str(e)}"})
+    
+# Database connection
+def get_db_connection():
+    return mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="amol",
+        database="myflix"
+    )
+
+@app.route('/api/movies', methods=['GET'])
+def get_movies():
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM movies")
+    movies = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    return jsonify(movies)
 
 # Run the Flask app
 if __name__ == '__main__':
