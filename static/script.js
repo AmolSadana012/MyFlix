@@ -391,3 +391,15 @@ if (SpeechRecognition) {
   console.warn("Speech recognition not supported in this browser.");
   voiceSearchBtn.style.display = 'none';
 }
+
+function showSection(sectionId) {
+    const sections = document.querySelectorAll(".movie-section");
+    const buttons = document.querySelectorAll(".toggle-btn");
+
+    sections.forEach(sec => {
+      sec.style.display = sec.id === sectionId ? "grid" : "none";
+    });
+
+    buttons.forEach(btn => btn.classList.remove("active"));
+    event.target.classList.add("active");
+  }

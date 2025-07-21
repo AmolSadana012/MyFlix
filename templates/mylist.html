@@ -20,12 +20,30 @@
         flex: 1;
     }
 
-    /* Optional footer styling */
     .footer {
         background-color: #111;
         color: #aaa;
         text-align: center;
         padding: 20px;
+    }
+
+    .toggle-btn {
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: #1f1f1f;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .toggle-btn:hover {
+      background-color: #333;
+    }
+
+    .toggle-btn.active {
+      background-color: #1E90FF;
     }
 
   </style>
@@ -69,9 +87,25 @@
   <main class="mylist-section">
     <h1>My List</h1>
     <p>Your saved movies and series will appear here.</p>
-    <div class="movie-thumbnails" id="my-list-thumbnails">
-      <!-- Dynamically filled by JavaScript -->
+
+    <div class="list-toggle-buttons" style="display: flex; justify-content: center; gap: 1rem; margin: 1.5rem 0;">
+      <button onclick="showSection('watchlist')" class="toggle-btn active">Watchlist</button>
+      <button onclick="showSection('favorites')" class="toggle-btn">Favorites</button>
+      <button onclick="showSection('all')" class="toggle-btn">All</button>
     </div>
+
+    <div id="watchlist" class="movie-section movie-thumbnails">
+      <!-- Watchlist movies  -->
+    </div>
+
+    <div id="favorites" class="movie-section movie-thumbnails" style="display: none;">
+      <!-- Favorites movies  -->
+    </div>
+
+    <div id="all" class="movie-section movie-thumbnails" style="display: none;">
+      <!-- All saved movies  -->
+    </div>
+
   </main>
 
   <footer class="footer">
