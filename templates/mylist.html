@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="static\style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    /* Make entire page a flex column */
+    /* Entire page as a flex column */
     body {
         display: flex;
         flex-direction: column;
@@ -15,7 +15,7 @@
         margin: 0;
     }
 
-    /* Let main content take up remaining space */
+    /* Main content takes up remaining space */
     main {
         flex: 1;
     }
@@ -44,6 +44,43 @@
 
     .toggle-btn.active {
       background-color: #1E90FF;
+    }
+    
+    .movie-section {
+      display: flex;
+      gap: 15px;
+      overflow-x: auto;
+      padding: 20px;
+      scroll-snap-type: x mandatory;
+      white-space: nowrap;
+      scrollbar-width: none;
+    }
+
+    .movie-section::-webkit-scrollbar {
+      height: none;
+    }
+
+    .movie-section::-webkit-scrollbar-thumb {
+      background: #555;
+      border-radius: 4px;
+    }
+
+    .movie-card {
+      min-width: 180px;
+      flex: 0 0 auto;
+      color: white;
+      text-align: center;
+    }
+
+    .movie-card img {
+      width: 180px;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    .movie-card:hover {
+      transform: scale(1.05);
     }
 
   </style>
@@ -94,16 +131,45 @@
       <button onclick="showSection('all')" class="toggle-btn">All</button>
     </div>
 
-    <div id="watchlist" class="movie-section movie-thumbnails">
-      <!-- Watchlist movies  -->
+    <div id="watchlist" class="movie-section">
+      <div class="movie-card">
+        <img src="static\images\m1.jpg" alt="To All The Boys I have Loved Before">
+        <h3>To All The Boys I have Loved Before</h3>
+      </div>
+      <div class="movie-card">
+        <img src="static\images\movie3.jpg" alt="Ballerina">
+        <h3>Ballerina</h3>
+      </div>
     </div>
 
-    <div id="favorites" class="movie-section movie-thumbnails" style="display: none;">
-      <!-- Favorites movies  -->
+    <div id="favorites" class="movie-section" style="display: none;">
+      <div class="movie-card">
+        <img src="static\images\movie100.jpg" alt="Goodboy">
+        <h3>Goodboy</h3>
+      </div>
+      <div class="movie-card">
+        <img src="static\images\movie9.jpg" alt="Anora">
+        <h3>Anora</h3>
+      </div>
     </div>
 
-    <div id="all" class="movie-section movie-thumbnails" style="display: none;">
-      <!-- All saved movies  -->
+    <div id="all" class="movie-section" style="display: none;">
+      <div class="movie-card">
+        <img src="static\images\movie3.jpg" alt="Ballerina">
+        <h3>Ballerina</h3>
+      </div>
+      <div class="movie-card">
+        <img src="static\images\m1.jpg" alt="To All The Boys I have Loved Before">
+        <h3>To All The Boys I have Loved Before</h3>
+      </div>
+      <div class="movie-card">
+        <img src="static\images\movie9.jpg" alt="Anora">
+        <h3>Anora</h3>
+      </div>
+      <div class="movie-card">
+        <img src="static\images\movie100.jpg" alt="Goodboy">
+        <h3>Goodboy</h3>
+      </div>
     </div>
 
   </main>
