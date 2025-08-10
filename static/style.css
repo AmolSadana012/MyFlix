@@ -745,3 +745,34 @@ nav a:hover {
     margin-right: 32px;
   }
 }
+
+/* Dark\Light mode */
+:root {
+  --bg-color: #141414;
+  --text-color: #ffffff;
+  --accent-color: #1E90FF;
+}
+
+body.light-theme {
+  --bg-color: #ffffff;
+  --text-color: #141414;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.theme-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-color);
+  transition: transform 0.2s;
+}
+
+.theme-btn:hover {
+  transform: scale(1.2);
+}

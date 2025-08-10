@@ -403,3 +403,37 @@ function showSection(sectionId) {
     buttons.forEach(btn => btn.classList.remove("active"));
     event.target.classList.add("active");
   }
+
+  // Dark\Light mode
+const themeToggleBtn = document.getElementById('theme-toggle');
+const themeIcon = themeToggleBtn.querySelector('i');
+
+// Load saved theme
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+  document.body.classList.add(savedTheme);
+  updateIcon(savedTheme);
+} else {
+  updateIcon('dark'); // default
+}
+
+// Toggle theme on click
+themeToggleBtn.addEventListener('click', () => {
+  document.body.classList.toggle('light-theme');
+
+  const currentTheme = document.body.classList.contains('light-theme')
+    ? 'light-theme'
+    : 'dark';
+
+  updateIcon(currentTheme);
+  localStorage.setItem('theme', currentTheme);
+});
+
+// Update icon based on theme
+function updateIcon(theme) {
+  if (theme === 'light-theme') {
+    themeIcon.classList.replace('fa-moon', 'fa-sun');
+  } else {
+    themeIcon.classList.replace('fa-sun', 'fa-moon');
+  }
+}
