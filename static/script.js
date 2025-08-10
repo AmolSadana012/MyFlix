@@ -404,36 +404,32 @@ function showSection(sectionId) {
     event.target.classList.add("active");
   }
 
-  // Dark\Light mode
-const themeToggleBtn = document.getElementById('theme-toggle');
-const themeIcon = themeToggleBtn.querySelector('i');
-
-// Load saved theme
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme) {
-  document.body.classList.add(savedTheme);
-  updateIcon(savedTheme);
-} else {
-  updateIcon('dark'); // default
-}
-
-// Toggle theme on click
-themeToggleBtn.addEventListener('click', () => {
-  document.body.classList.toggle('light-theme');
-
-  const currentTheme = document.body.classList.contains('light-theme')
-    ? 'light-theme'
-    : 'dark';
-
-  updateIcon(currentTheme);
-  localStorage.setItem('theme', currentTheme);
-});
-
-// Update icon based on theme
-function updateIcon(theme) {
-  if (theme === 'light-theme') {
-    themeIcon.classList.replace('fa-moon', 'fa-sun');
-  } else {
-    themeIcon.classList.replace('fa-sun', 'fa-moon');
+// Settings
+document.addEventListener("DOMContentLoaded", () => {
+  const settingsBtn = document.getElementById('settings-btn');
+  const sidebar = document.getElementById('settings-sidebar');
+  if (!settingsBtn || !sidebar) {
+    console.error("Settings button or sidebar not found in DOM");
+    return;
   }
-}
+  settingsBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    fetch('/settings')
+      .then(res => {
+        if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
+        return res.text();
+      })
+      .then(html => {
+        sidebar.innerHTML = html;
+        sidebar.classList.add('active');
+
+        const closeBtn = sidebar.querySelector('#close-settings');
+        if (closeBtn) {
+          closeBtn.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+          });
+        }
+      })
+      .catch(err => console.error('Error loading settings:', err));
+  });
+});

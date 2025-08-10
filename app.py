@@ -147,6 +147,10 @@ def get_movies():
     conn.close()
     return jsonify(movies)
 
+@app.route("/settings")
+def settings():
+    return render_template("settings.html")
+
 # Run the Flask app
 if __name__ == '__main__':
     app.run(debug=True)
