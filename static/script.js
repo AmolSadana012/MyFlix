@@ -404,14 +404,16 @@ function showSection(sectionId) {
     event.target.classList.add("active");
   }
 
-// Settings
 document.addEventListener("DOMContentLoaded", () => {
   const settingsBtn = document.getElementById('settings-btn');
   const sidebar = document.getElementById('settings-sidebar');
+  const hamburger = document.querySelector('.menu-open-btn');  
+
   if (!settingsBtn || !sidebar) {
     console.error("Settings button or sidebar not found in DOM");
     return;
   }
+
   settingsBtn.addEventListener('click', (e) => {
     e.preventDefault();
     fetch('/settings')
@@ -423,10 +425,18 @@ document.addEventListener("DOMContentLoaded", () => {
         sidebar.innerHTML = html;
         sidebar.classList.add('active');
 
+        if (hamburger) {
+          hamburger.style.display = 'none';  
+        }
+
         const closeBtn = sidebar.querySelector('#close-settings');
         if (closeBtn) {
           closeBtn.addEventListener('click', () => {
             sidebar.classList.remove('active');
+
+            if (hamburger) {
+              hamburger.style.display = ''; 
+            }
           });
         }
       })
