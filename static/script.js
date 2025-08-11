@@ -404,10 +404,18 @@ function showSection(sectionId) {
     event.target.classList.add("active");
   }
 
+// Settings
 document.addEventListener("DOMContentLoaded", () => {
   const settingsBtn = document.getElementById('settings-btn');
   const sidebar = document.getElementById('settings-sidebar');
   const hamburger = document.querySelector('.menu-open-btn');  
+
+  if (!localStorage.getItem("theme")) {
+    document.body.classList.add("dark-mode");
+    localStorage.setItem("theme", "dark");
+  } else {
+    document.body.classList.toggle("dark-mode", localStorage.getItem("theme") === "dark");
+  }
 
   if (!settingsBtn || !sidebar) {
     console.error("Settings button or sidebar not found in DOM");
@@ -439,6 +447,16 @@ document.addEventListener("DOMContentLoaded", () => {
             }
           });
         }
+
+        const themeToggleBtn = sidebar.querySelector('#theme-toggle-btn');
+        if (themeToggleBtn) {
+          themeToggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle("dark-mode");
+            const isDark = document.body.classList.contains("dark-mode");
+            localStorage.setItem("theme", isDark ? "dark" : "light");
+          });
+        }
+
       })
       .catch(err => console.error('Error loading settings:', err));
   });
