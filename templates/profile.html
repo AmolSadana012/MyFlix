@@ -119,6 +119,19 @@
         padding: 20px;
     }
   </style>
+
+  <script>
+      (function() {
+        const theme = localStorage.getItem("theme");
+        if (!theme) {
+          document.body.classList.add("dark-mode");
+          localStorage.setItem("theme", "dark");
+        } else {
+          document.body.classList.toggle("dark-mode", theme === "dark");
+        }
+      })();
+    </script>
+
   <script src="static\script.js" defer></script>
 </body>
 </html>
