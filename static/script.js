@@ -449,11 +449,28 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         const themeToggleBtn = sidebar.querySelector('#theme-toggle-btn');
-        if (themeToggleBtn) {
+        const themeIcon = sidebar.querySelector('#theme-icon');
+
+        if (themeToggleBtn && themeIcon) {
+          if (localStorage.getItem("theme") === "dark") {
+            themeIcon.classList.remove("fa-sun");
+            themeIcon.classList.add("fa-moon");
+          } else {
+            themeIcon.classList.remove("fa-moon");
+            themeIcon.classList.add("fa-sun");
+          }
+
           themeToggleBtn.addEventListener('click', () => {
             document.body.classList.toggle("dark-mode");
             const isDark = document.body.classList.contains("dark-mode");
             localStorage.setItem("theme", isDark ? "dark" : "light");
+            if (isDark) {
+              themeIcon.classList.remove("fa-sun");
+              themeIcon.classList.add("fa-moon");
+            } else {
+              themeIcon.classList.remove("fa-moon");
+              themeIcon.classList.add("fa-sun");
+            }
           });
         }
 
