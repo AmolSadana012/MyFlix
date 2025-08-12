@@ -852,4 +852,24 @@ body {
   color: #000000;
 }
 
+/* Dark mode profile text */
+body.dark-mode .profile-section {
+  color: white;
+}
+
+/* Light mode profile text */
+body:not(.dark-mode) .profile-section {
+  color: black;
+}
+
+body.dark-mode .profile-card {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: white;
+}
+
+body:not(.dark-mode) .profile-card {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: black;
+}
+
 
