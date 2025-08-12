@@ -852,12 +852,10 @@ body {
   color: #000000;
 }
 
-/* Dark mode profile text */
 body.dark-mode .profile-section {
   color: white;
 }
 
-/* Light mode profile text */
 body:not(.dark-mode) .profile-section {
   color: black;
 }

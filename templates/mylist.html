@@ -68,7 +68,7 @@
     .movie-card {
       min-width: 180px;
       flex: 0 0 auto;
-      color: white;
+      /* color: white; */
       text-align: center;
     }
 
@@ -81,6 +81,18 @@
 
     .movie-card:hover {
       transform: scale(1.05);
+    }
+
+    body.dark-mode .movie-card h3,
+    body.dark-mode .mylist-section p,
+    body.dark-mode .mylist-section h1 {
+      color: white;
+    }
+
+    body:not(.dark-mode) .movie-card h3,
+    body:not(.dark-mode) .mylist-section p,
+    body:not(.dark-mode) .mylist-section h1 {
+      color: black;
     }
 
   </style>
