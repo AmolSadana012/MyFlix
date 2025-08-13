@@ -117,7 +117,6 @@ def chat():
 
         if isinstance(result, list) and "generated_text" in result[0]:
             bot_reply = result[0]["generated_text"]
-            # Strip out everything before final "Assistant:" to avoid prompt repetition
             if "Assistant:" in bot_reply:
                 bot_reply = bot_reply.split("Assistant:")[-1].strip()
         else:
