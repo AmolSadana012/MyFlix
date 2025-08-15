@@ -873,8 +873,8 @@ body:not(.dark-mode) .profile-card {
 /* Profile Statistics Container */
 .profile-stats {
   display: none; 
-  background-color: white;
-  color: black;
+  background-color: black;
+  color: white;
   padding: 1rem;
   border-radius: 10px;
   margin-top: 1rem;
@@ -898,7 +898,7 @@ body:not(.dark-mode) .profile-card {
 }
 
 .profile-stats strong {
-  color: black;
+  color: white;
 }
 
 /* Button styling */
@@ -917,11 +917,11 @@ body:not(.dark-mode) .profile-card {
   background-color: #0f75d4;
 }
 
-body.dark-mode .profile-stats {
-  background-color: black;
-  color: white;
+body.light-mode .profile-stats {
+  background-color: white;
+  color: black;
 }
 
-body.dark-mode .profile-stats strong {
-  color:white;
+body.light-mode .profile-stats strong {
+  color:black;
 }
