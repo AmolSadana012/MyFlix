@@ -55,6 +55,19 @@
         <p><strong>Favorites:</strong> 12 movies</p>
       </div>
     </div>
+
+    <button id="toggle-stats-btn" class="stats-btn">View Profile Statistics</button>
+
+    <div id="profile-stats" class="profile-stats">
+      <h2>Profile Statistics:</h2>
+      <ul>
+        <li><strong>Favorite Genre:</strong> <span id="favorite-genre">Action</span></li>
+        <li><strong>Most Watched Actor:</strong> <span id="most-watched-actor">Tom Cruise</span></li>
+        <li><strong>Movies Watched:</strong> <span id="movies-watched">45</span></li>
+        <li><strong>Total Watch Hours:</strong> <span id="watch-hours">120 hrs</span></li>
+      </ul>
+    </div>
+
   </main>
 
   <footer class="footer">
@@ -67,6 +80,7 @@
     function signOut() {
       window.location.href = "login.html";
     }
+
   </script>
 
   <style>
@@ -130,8 +144,28 @@
           document.body.classList.toggle("dark-mode", theme === "dark");
         }
       })();
+
     </script>
 
   <script src="static\script.js" defer></script>
+  <script>
+  // Profile Statistics Toggle
+  document.addEventListener("DOMContentLoaded", function () {
+    const statsBtn = document.getElementById("toggle-stats-btn");
+    const profileStats = document.getElementById("profile-stats");
+
+    if (statsBtn && profileStats) {
+      statsBtn.addEventListener("click", function () {
+        if (profileStats.style.display === "none" || profileStats.style.display === "") {
+          profileStats.style.display = "block";
+          statsBtn.textContent = "Hide Profile Statistics";
+        } else {
+          profileStats.style.display = "none";
+          statsBtn.textContent = "View Profile Statistics";
+        }
+      });
+    }
+  });
+  </script>
 </body>
 </html>
